@@ -1,3 +1,3 @@
 # Fourier-IS-Pairs-Trading
 The code executes a pairs trading strategy based on two correlated stocks, where a long-and-short position is open whenever the log-difference spread between the two stocks gets too large (in absolute value).  
-By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous 
+By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous *four* days, eliminates the minutes where for some reason the data of one of the stock is not available and then operates the strategy on each day, keeping track of the number of operations and their returns after fees.
