@@ -4,7 +4,7 @@ By inserting the tickers of the firms you want to test the strategy on, the code
 
 # Trading Strategy
 The trading strategy requires daily data of two correlated stock ${X_t}_{t=1}^n,\{X_t\}_{t=1}^n$ and supposes that both stocks are driven by a stochastic volatility model of the following form:
-$$
+```math
     \begin{cases}
         dX_t=\mu_XX_tdt+\sigma_t^XX_tdB_t^X\\
         \sigma_t^X=\exp(\mathlarger{\frac{M_t}{2}})\\
@@ -14,7 +14,7 @@ $$
         \sigma_t^Y=\exp(\mathlarger{\frac{N_t}{2}})\\
         dN_t=\kappa_Y(m_Y-N_t)dt+\xi_YdW_t^Y
     \end{cases}
-$$
+```
 1) Compute the log-difference spread of the data, namely $'Z_t:=\log(X_t)-\log(Y_t)=\log(\frac{X_t}{Y_t})'$.
 2) Define a training window of length $K$ and compute the standardized rolling series $'z_t:=\frac{Z_t-\mu^Z_t}{\sigma^Z_t}'$, where $\mu_t^Z$ is the $K$-moving average and $\sigma_t^Z$ the $K$-moving standard deviation.
 3) When the signal gets too large in absolute value $|z_t|>\phi>0$, use the Fourier function to estimate the parameters of the underlying model using the last $K$ data 
