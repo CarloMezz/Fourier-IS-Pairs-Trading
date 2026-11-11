@@ -3,5 +3,6 @@ The code executes a pairs trading strategy based on two correlated stocks, where
 By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous *four* days, eliminates the minutes where for some reason the data of one of the stock is not available and then operates the strategy on each day, keeping track of the number of operations and their returns after fees.
 
 # Trading Strategy
-The trading strategy requires daily data of two correlated stock $\{X_t\}_{t=1}^n,\{X_t\}_{t=1}^n$ and work as follows:
-1) Compute the log-difference spread of the 
+The trading strategy requires daily data of two correlated stock $'\{X_t\}_{t=1}^n,\{X_t\}_{t=1}^n'$ and work as follows:
+1) Compute the log-difference spread of the data, namely $'Z_t:=\log(X_t)-\log(Y_t)=\log(\frac{X_t}{Y_t})'$
+2) Define a training window of length $K$ and compute the standardized rolling series $'z_t:=\frac{Z_t-\mu^Z_t}{\sigma^Z_t}'$, where 
