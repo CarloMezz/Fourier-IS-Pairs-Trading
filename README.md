@@ -1,6 +1,9 @@
 # Fourier-IS-Pairs-Trading
 The code executes a pairs trading strategy based on two correlated stocks, where a long-and-short position is open whenever the log-difference spread between the two stocks gets too large (in absolute value).  
-By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous *four* days, eliminates the minutes where for some reason the data of one of the stock is not available and then operates the strategy on each day, keeping track of the number of operations and their returns after fees.
+By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous *four* days, eliminates the minutes where for some reason the data of one of the stock is not available and then operates the strategy on each day, keeping track of the number of operations and their returns after fees. Then it plots in the same graph the returns of each operation divided into days.
+
+<img width="1489" height="790" alt="MSFT" src="https://github.com/user-attachments/assets/769b31ad-e12a-4dd7-9e13-228fdf090a18" />
+
 
 # Trading Strategy
 The trading strategy assumes that the two stocks will go in the same direction since they are correlated, hence when their spread is too large (a threshold is overcome) a first signal is activated, but the divergence may be persistent and not informative; to overcome this pitfall we validate the trade by computing a quantile of the future distribution of the spread which has to be within the previous boundaries (not bigger than the threshold overcome before). If this second condition is met, then a long-and-short position is opened and kept until either the spread is no longer large or a stop-loss order is reached.
