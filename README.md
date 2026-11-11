@@ -3,15 +3,15 @@ The code executes a pairs trading strategy based on two correlated stocks, where
 By inserting the tickers of the firms you want to test the strategy on, the code downloads from Yahoo Finance one-minute data for the previous *four* days, eliminates the minutes where for some reason the data of one of the stock is not available and then operates the strategy on each day, keeping track of the number of operations and their returns after fees.
 
 # Trading Strategy
-The trading strategy requires daily data of two correlated stock ${X_t}_{t=1}^n,\{X_t\}_{t=1}^n$ and supposes that both stocks are driven by a stochastic volatility model of the following form:
+The trading strategy requires daily data of two correlated stock $'\{X_t\}_{t=1}^n,\{X_t\}_{t=1}^n'$ and supposes that both stocks are driven by a stochastic volatility model of the following form:
 ```math
     \begin{cases}
         dX_t=\mu_XX_tdt+\sigma_t^XX_tdB_t^X\\
-        \sigma_t^X=\exp(\mathlarger{\frac{M_t}{2}})\\
+        \sigma_t^X=\exp(\frac{M_t}{2})\\
         dM_t=\kappa_X(m_X-M_t)dt+\xi_XdW_t^X
     \end{cases}\ \ \ \begin{cases}
         dY_t=\mu_YY_tdt+\sigma_t^YY_tdB_t^Y\\
-        \sigma_t^Y=\exp(\mathlarger{\frac{N_t}{2}})\\
+        \sigma_t^Y=\exp(\frac{N_t}{2})\\
         dN_t=\kappa_Y(m_Y-N_t)dt+\xi_YdW_t^Y
     \end{cases}
 ```
