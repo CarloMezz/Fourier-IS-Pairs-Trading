@@ -23,6 +23,7 @@ where the correlation is reflected in  $`dB_t^XdB_t^Y=\rho_tdt`$ and, after some
 ```math
 dZ_t=\big(\mu_X-\mu_Y-\frac{1}{2}(\sigma_t^X)^2+\frac{1}{2}(\sigma_t^Y)^2\big)dt +\sqrt{(\sigma_t^X)^2+(\sigma_t^Y)^2-2\rho_t\sigma_t^X\sigma_t^Y}dB_t
 ```
+The strategy is performed by the following steps:
 1) Compute the log-difference spread of the data, namely $`Z_t:=\log(X_t)-\log(Y_t)=\log(\frac{X_t}{Y_t})`$.
 2) Define a training window of length $K$ and compute the standardized rolling series $`z_t:=\frac{Z_t-\mu^Z_t}{\sigma^Z_t}`$, where $\mu_t^Z$ is the $K$-moving average and $\sigma_t^Z$ the $K$-moving standard deviation.
 3) When the signal gets too large in absolute value $|z_t|>\varphi>0$, use the Fourier function to estimate the parameters of the underlying model using the last $K$ data to get the MLE-estimated parameters $`\hat{\kappa}_X,\hat{m}_X,\hat{\xi}_X,\hat{\mu}_X`$ for $X$, $\hat{\kappa}_Y,\hat{m}_Y,\hat{\xi}_Y,\hat{\mu}_Y$ for $Y$ and $\hat{\rho}$.
